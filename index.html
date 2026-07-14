@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Japonesa 3D</title>
+    <!-- Google Fonts: Bubbly & Friendly -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- 3D Background Container -->
+    <div id="canvas-container"></div>
+
+    <main class="app-container">
+        
+        <!-- Tela Inicial -->
+        <section id="screen-home" class="screen active">
+            <div class="title-container">
+                <h1 class="kids-title">Aventura Japonesa!</h1>
+            </div>
+            <p class="subtitle">Aprenda Hiragana e Kanji brincando!</p>
+            
+            <div class="level-selector">
+                <h3>Escolha o Nível:</h3>
+                <div id="level-buttons" class="level-grid">
+                    <button class="btn-level" data-level="H1">Vogais (Hiragana)</button>
+                    <button class="btn-level" data-level="H2">Grupo K (Hiragana)</button>
+                    <button class="btn-level btn-kanji" data-level="K1">Kanjis Iniciais</button>
+                    <button class="btn-level btn-kanji" data-level="KM1">Kanjii Master I</button>
+                    <button class="btn-level btn-kanji" data-level="K-ALL">Modo Sobrevivência (Todos)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela de Flashcards (Modo Estudo) -->
+        <section id="screen-study" class="screen">
+            <h2 class="study-title">Hora de Aprender!</h2>
+            
+            <div class="flashcard">
+                <div class="flashcard-char" id="study-char">あ</div>
+                <button class="btn-audio" id="btn-study-audio" title="Ouvir som">🔊</button>
+                <div class="flashcard-details">
+                    <div class="romaji" id="study-romaji">a</div>
+                    <p class="dica" id="study-dica">Parece um A desenhado livremente.</p>
+                </div>
+            </div>
+
+            <div class="study-controls">
+                <button id="btn-study-prev" class="btn-nav">⬅️ Anterior</button>
+                <button id="btn-study-next" class="btn-nav">Próximo ➡️</button>
+            </div>
+            <button id="btn-start-quiz" class="btn-primary mt-2">JOGAR AGORA! 🎮</button>
+        </section>
+
+        <!-- Tela de Jogo -->
+        <section id="screen-game" class="screen">
+            <header class="game-header">
+                <div class="hud-item">
+                    <span class="hud-label">PONTOS</span>
+                    <span id="hud-score" class="hud-value">0</span>
+                </div>
+                <div class="hud-item hud-lives">
+                    <span class="hud-label">VIDAS</span>
+                    <div id="hud-hearts" class="hearts-container">
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="card-container game-card">
+                <div id="kanji-display" class="kanji-character">漢</div>
+                <button class="btn-audio small" id="btn-game-audio" title="Ouvir som">🔊</button>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text">Qual é a leitura correta?</h2>
+                <div id="options-grid" class="options-grid">
+                    <!-- Opções geradas via JS -->
+                </div>
+            </div>
+            
+            <!-- Feedback Visual -->
+            <div id="feedback-overlay" class="feedback-overlay">
+                <div id="feedback-icon" class="feedback-icon"></div>
+            </div>
+        </section>
+
+        <!-- Tela de Game Over -->
+        <section id="screen-gameover" class="screen">
+            <h2 class="gameover-title" id="gameover-title-text">Fim de Jogo!</h2>
+            <div class="mascot-img">🦊</div>
+            
+            <div class="result-card">
+                <div class="result-row">
+                    <span>Você fez:</span>
+                    <span id="final-score" class="highlight">0 pontos</span>
+                </div>
+            </div>
+
+            <button id="btn-home" class="btn-primary mt-2">🏠 Voltar ao Início</button>
+        </section>
+
+    </main>
+
+    <!-- Áudios e Lógica -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
